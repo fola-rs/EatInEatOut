@@ -1,0 +1,195 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* ── Shared page wrapper ──────────────────────────────────────────────────── */
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+.page-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 32px;
+  color: #222;
+}
+
+/* ── Buttons ──────────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #fff;
+  transition: opacity 0.15s;
+  text-decoration: none;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.btn-green  { background: #4caf50; }
+.btn-blue   { background: #2196f3; }
+.btn-orange { background: #ff9800; }
+.btn-grey   { background: #757575; }
+.btn-red    { background: #f44336; }
+
+/* ── Home nav ─────────────────────────────────────────────────────────────── */
+.nav-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 280px;
+}
+
+/* ── Form ─────────────────────────────────────────────────────────────────── */
+.form-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 32px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-card label {
+  font-weight: bold;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.form-card input,
+.form-card textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  resize: vertical;
+}
+
+.form-card textarea {
+  min-height: 140px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.alert {
+  padding: 10px 14px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+.alert-success { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
+.alert-error   { background: #ffebee; color: #c62828; border: 1px solid #ef9a9a; }
+
+/* ── Table ────────────────────────────────────────────────────────────────── */
+.table-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  width: 100%;
+  max-width: 900px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9rem;
+}
+
+th {
+  background: #f0f0f0;
+  font-weight: bold;
+}
+
+tr:hover td {
+  background: #fafafa;
+}
+
+/* ── Recipe / image upload ────────────────────────────────────────────────── */
+.upload-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 40px;
+  border: 2px dashed #90caf9;
+  border-radius: 8px;
+  background: #fff;
+  width: 100%;
+  max-width: 500px;
+  cursor: pointer;
+}
+
+.upload-area input[type="file"] {
+  display: none;
+}
+
+.upload-preview {
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 6px;
+  object-fit: contain;
+}
+
+.prediction-result {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px 28px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.prediction-result h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.confidence-bar {
+  height: 12px;
+  background: #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.confidence-fill {
+  height: 100%;
+  background: #4caf50;
+  transition: width 0.4s;
+}
