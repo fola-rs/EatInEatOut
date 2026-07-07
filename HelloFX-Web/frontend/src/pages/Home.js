@@ -19,9 +19,10 @@ export default function Home() {
         <Link to="/load" className="btn btn-blue" style={{ textAlign: "center" }}>
           Load List
         </Link>
-        <Link to="/recipes" className="btn btn-orange" style={{ textAlign: "center" }}>
-          Recipe Searcher
+        <Link to="/pantry" className="btn btn-green" style={{ textAlign: "center" }}>
+          My Pantry
         </Link>
+
       </div>
     </div>
   );
