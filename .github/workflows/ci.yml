@@ -1,0 +1,64 @@
+# CI pipeline — runs on every push to dev, and on every pull request targeting main.
+# If any job fails, the push/PR is flagged as broken on GitHub.
+# Two jobs run in parallel: one for the frontend, one for the backend.
+
+name: CI
+
+on:
+  push:
+    branches: [dev]          # run whenever you push to dev
+  pull_request:
+    branches: [main]         # run whenever you open a PR to merge into main
+
+jobs:
+
+  # ── Frontend: install deps and run Jest tests ──────────────────────────────
+  frontend:
+    runs-on: ubuntu-latest   # GitHub spins up a fresh Linux VM for every run
+
+    defaults:
+      run:
+        working-directory: HelloFX-Web/frontend  # all commands below run from this folder
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4  # downloads your repo into the VM
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: HelloFX-Web/frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci  # ci = clean install, faster and stricter than npm install
+
+      - name: Run tests
+        run: npm test -- --watchAll=false --passWithNoTests
+        # --watchAll=false: run once and exit (default is interactive watch mode)
+        # --passWithNoTests: don't fail if there are no test files yet
+
+  # ── Backend: install deps and run pytest ───────────────────────────────────
+  backend:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: HelloFX-Web/backend
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests
+        run: pytest --tb=short -q  # -q = quiet output, --tb=short = compact error traces
+        # pytest will look for any file named test_*.py or *_test.py

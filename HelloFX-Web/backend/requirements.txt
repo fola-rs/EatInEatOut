@@ -1,2 +1,4 @@
 fastapi
 uvicorn[standard]
+httpx        # used by FastAPI's TestClient to make requests in tests
+pytest       # the test runner
